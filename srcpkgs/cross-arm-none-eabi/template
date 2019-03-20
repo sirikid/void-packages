@@ -16,7 +16,7 @@ license="GPL-3, GPL-2, LGPL-2.1"
 distfiles="
  ${GNU_SITE}/binutils/binutils-${_binutils_version}.tar.xz
  ${GNU_SITE}/gcc/gcc-${_gcc_version}/gcc-${_gcc_version}.tar.xz
- ftp:///sourceware.org/pub/newlib/newlib-${_newlib_version}.tar.gz
+ ftp://sourceware.org/pub/newlib/newlib-${_newlib_version}.tar.gz
 "
 
 checksum="
