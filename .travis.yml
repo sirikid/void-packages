@@ -29,7 +29,7 @@ before_script:
     - common/travis/bootstrap.sh $BOOTSTRAP
 
 script:
-    - common/travis/build.sh $BOOTSTRAP $ARCH
+    - travis_wait 60 common/travis/build.sh $BOOTSTRAP $ARCH
 
 after_script:
     - common/travis/show_files.sh $BOOTSTRAP $ARCH
