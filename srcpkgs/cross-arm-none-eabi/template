@@ -348,8 +348,8 @@ do_install() {
 	make DESTDIR=${DESTDIR} install
 
 	# strip target binaries
-	find ${DESTDIR}/${_sysroot}/usr/lib \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
-	find ${DESTDIR}/usr/lib/gcc/${_triplet}/${_gcc_version} \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
+	# find ${DESTDIR}/${_sysroot}/usr/lib \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
+	# find ${DESTDIR}/usr/lib/gcc/${_triplet}/${_gcc_version} \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
 
 	# strip host binaries
 	find ${DESTDIR}/usr/lib/gcc/${_triplet}/${_gcc_version} -type f -and \( -executable \) -exec /usr/bin/strip '{}' \;
