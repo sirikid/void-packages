@@ -1,4 +1,4 @@
-# Template file for 'cross-arm-none-eabi'
+# Template file for 'cross-${_triplet}'
 _binutils_version=2.32
 _gcc_version=7.3.0
 _newlib_version=2.4.0.20161025
@@ -29,8 +29,9 @@ nostrip=yes
 nodebug=yes
 create_wrksrc=yes
 
-hostmakedepends="perl flex bison"
+hostmakedepends="perl flex bison wget"
 makedepends="zlib-devel gmp-devel mpfr-devel libmpc-devel isl16-devel"
+fetch_cmd="wget -q"
 
 _apply_patch() {
 	local args="$1" pname="$(basename $2)"
@@ -348,8 +349,8 @@ do_install() {
 	make DESTDIR=${DESTDIR} install
 
 	# strip target binaries
-	find ${DESTDIR}/${_sysroot}/usr/lib \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
-	find ${DESTDIR}/usr/lib/gcc/${_triplet}/${_gcc_version} \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
+	# find ${DESTDIR}/${_sysroot}/usr/lib \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
+	# find ${DESTDIR}/usr/lib/gcc/${_triplet}/${_gcc_version} \( -name "*.a" -or -name "*.o" \) -exec ${_triplet}-strip '{}' \;
 
 	# strip host binaries
 	find ${DESTDIR}/usr/lib/gcc/${_triplet}/${_gcc_version} -type f -and \( -executable \) -exec /usr/bin/strip '{}' \;
