@@ -32,8 +32,9 @@ nostrip=yes
 nodebug=yes
 create_wrksrc=yes
 
-hostmakedepends="perl flex bison"
+hostmakedepends="perl flex bison wget"
 makedepends="zlib-devel gmp-devel mpfr-devel libmpc-devel isl16-devel"
+fetch_cmd="wget"
 
 _apply_patch() {
 	local args="$1" pname="$(basename $2)"
