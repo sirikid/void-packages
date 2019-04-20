@@ -1,0 +1,25 @@
+# Template file for 'eduke32'
+pkgname=eduke32
+version=20190419.7615
+revision=1
+archs="i686* x86_64*"
+wrksrc=${pkgname}_${version/./-}
+build_style=gnu-makefile
+make_build_args="KRANDEBUG=0 LINKED_GTK=1"
+hostmakedepends="pkg-config"
+makedepends="SDL2-devel SDL2_mixer-devel gtk+-devel libvorbis-devel libflac-devel libvpx-devel"
+short_desc="Game engine and source port of the classic shooter Duke Nukem 3D"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-2.0-or-later"
+homepage="https://www.eduke32.com/"
+distfiles="https://dukeworld.com/${pkgname}/synthesis/${version/./-}/${pkgname}_src_${version/./-}.tar.xz"
+checksum=d007989808eb5de27d93f20b438440f70e72fffd9670fd10a30c5583284b82b0
+
+case "${XBPS_TARGET_MACHINE}" in
+	i686*) hostmakedepends+=" nasm" ;;
+esac
+
+do_install() {
+	vbin eduke32
+	vbin mapster32
+}

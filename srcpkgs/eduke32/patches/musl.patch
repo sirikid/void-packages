@@ -1,0 +1,34 @@
+diff --git source/build/src/baselayer.cpp source/build/src/baselayer.cpp
+index b23b1ae..5e6f541 100644
+--- source/build/src/baselayer.cpp
++++ source/build/src/baselayer.cpp
+@@ -495,15 +495,6 @@ void maybe_redirect_outputs(void)
+         return;
+
+     FILE *fp = freopen("stdout.txt", "w", stdout);
+-
+-    if (!fp)
+-        fp = fopen("stdout.txt", "w");
+-
+-    if (fp)
+-    {
+-        setvbuf(fp, 0, _IONBF, 0);
+-        *stdout = *fp;
+-        *stderr = *fp;
+-    }
++    (void) fp;
+ #endif
+ }
+diff --git source/build/src/sdlayer.cpp source/build/src/sdlayer.cpp
+index 929cee4..bc2bc25 100644
+--- source/build/src/sdlayer.cpp
++++ source/build/src/sdlayer.cpp
+@@ -305,7 +305,7 @@ void wm_setapptitle(const char *name)
+ //
+
+ /* XXX: libexecinfo could be used on systems without gnu libc. */
+-#if !defined _WIN32 && defined __GNUC__ && !defined __OpenBSD__ && !(defined __APPLE__ && defined __BIG_ENDIAN__) && !defined GEKKO && !defined EDUKE32_TOUCH_DEVICES && !defined __OPENDINGUX__
++#if !defined _WIN32 && defined __GNUC__ && !defined __OpenBSD__ && !(defined __APPLE__ && defined __BIG_ENDIAN__) && !defined GEKKO && !defined EDUKE32_TOUCH_DEVICES && !defined __OPENDINGUX__ && defined __GLIBC__
+ # define PRINTSTACKONSEGV 1
+ # include <execinfo.h>
+ #endif
