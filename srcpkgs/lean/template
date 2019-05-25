@@ -1,0 +1,32 @@
+# Template file for 'lean'
+pkgname=lean
+version=3.4.2
+revision=1
+build_style=cmake
+configure_args="../src"
+hostmakedepends="python3"
+makedepends="gmp-devel"
+short_desc="Lean Theorem Prover"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://leanprover.github.io/"
+distfiles="https://github.com/leanprover/${pkgname}/archive/v${version}.tar.gz"
+checksum=ec4488be8473577666f38dec81123d0f7b26476139d3caa2e175a571f6c00d87
+
+if [ "$CROSS_BUILD" ]; then
+	hostmakedepends+=" lean"
+	do_patch() {
+		# Replace relative paths with bare names to use host executables
+		sed -i 's,${LEAN_SOURCE_DIR}/../bin/,,' src/CMakeLists.txt
+	}
+fi
+
+lean-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision} gmp-devel"
+	pkg_install() {
+		vmove usr/include
+		vmove 'usr/lib/*.a'
+		vmove 'usr/lib/*.so'
+	}
+}
