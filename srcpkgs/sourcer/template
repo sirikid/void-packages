@@ -1,0 +1,23 @@
+# Template file for 'sourcer'
+pkgname=sourcer
+version=0
+revision=1
+_commit=e598ec52ed2c62eb50e4556dc9cd5adb664de610
+wrksrc="$pkgname-$_commit"
+archs=noarch
+hostmakedepends="rebar3"
+depends="erlang"
+short_desc="Erlang language server, providing IDE services"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="Apache-2.0"
+homepage="https://github.com/erlang/sourcer"
+distfiles="https://github.com/erlang/sourcer/archive/$_commit.tar.gz"
+checksum=542f9eda6cc2a94fcd1692ba0ab787e2dd254bd61e2aa84ca80162a2e6695795
+
+do_build() {
+	rebar3 compile
+}
+
+do_install() {
+	vbin _build/default/bin/erlang_ls sourcer
+}
