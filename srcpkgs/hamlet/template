@@ -1,0 +1,24 @@
+# Template file for 'hamlet'
+pkgname=hamlet
+version=0
+revision=1
+_commit=be80ef631665a7e0659223472fba21b6bd39fb77
+wrksrc="${pkgname}-${_commit}"
+build_style=gnu-makefile
+make_build_target="with-poly"
+make_install_args='INSTALLDIR=${DESTDIR}/usr/lib/hamlet'
+hostmakedepends="polyml"
+depends="polyml"
+short_desc="SML reference interpreter"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="custom"
+homepage="https://www.mpi-sws.org/~rossberg/hamlet/"
+distfiles="https://github.com/rossberg/hamlet/archive/${_commit}.tar.gz"
+checksum=8f6931fff25b26b7c75e360a7972102772b7b708183aa7236e4177f26a5298df
+nocross=yes
+nopie=yes
+
+post_install() {
+	vbin ${FILESDIR}/wrapper.sh hamlet
+	vlicense smlnj-lib/LICENSE.txt
+}
