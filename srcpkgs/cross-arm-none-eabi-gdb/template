@@ -3,7 +3,7 @@ _triplet=arm-none-eabi
 _pkgname=gdb
 pkgname=cross-${_triplet}-${_pkgname}
 version=8.3
-revision=1
+revision=2
 wrksrc="${_pkgname}-${version}"
 build_style=gnu-configure
 pycompile_dirs="/usr/share/${_pkgname}"
@@ -25,6 +25,7 @@ configure_args="
 "
 hostmakedepends="autoconf automake bison flex pkg-config"
 makedepends="babeltrace-devel expat-devel mpfr-devel ncurses-devel readline-devel zlib-devel $(vopt_if guile guile-devel) $(vopt_if python 'python3-devel gettext-libs')"
+depends="gdb-doc"
 short_desc="GNU Debugger"
 maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
 license="GPL-3.0-or-later"
@@ -38,6 +39,6 @@ build_options_default=" "
 nocross=yes
 
 post_install() {
-	# resolve conflicts with binutils and native gdb
+	# resolve conflicts with binutils and gdb-doc
 	rm -fr ${DESTDIR}/usr/{share/{locale,gdb,info},include}
 }
