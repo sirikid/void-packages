@@ -1,0 +1,21 @@
+# Template file for 'mmdb2'
+pkgname=mmdb2
+version=2.0.19
+revision=1
+build_style=gnu-configure
+configure_args="--enable-shared"
+short_desc="C++ toolkit for working with macromolecular coordinate files"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later,LGPL-3.0-or-later"
+homepage="https://launchpad.net/mmdb"
+distfiles="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/${pkgname}-${version}.tar.gz"
+checksum=8f44681ccda62b7bfb5e650f409766fcef48a218d8a891b967fea414ca26196e
+
+mmdb2-devel_package() {
+	short_desc+=" - development files"
+	depends+=" ${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+	}
+}
