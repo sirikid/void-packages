@@ -1,0 +1,24 @@
+# Template file for 'wob'
+pkgname=wob
+version=0.2
+revision=1
+_wlr_commit=59497d93794efac39d8c85b1d964ad8a461cbeb6
+build_style=meson
+hostmakedepends="ninja pkg-config unzip wayland-protocols"
+makedepends="wayland-devel"
+short_desc="A lightweight overlay volume/backlight/progress/anything bar for Wayland"
+maintainer="a <a@a.a>"
+license="ISC"
+homepage="https://github.com/francma/wob"
+distfiles="
+ https://github.com/francma/wob/archive/0.2.tar.gz
+ https://github.com/swaywm/wlr-protocols/archive/${_wlr_commit}.tar.gz
+"
+checksum="
+ 8f8d5fa256af44ff34843f353dc34525464a9cbf8d1711b20473fe862e1ab8ae
+ c15df924f4d9996d6207ada3f2d478ab955b0b8ebf33fd8e6a7f3d27a0911ed8
+"
+
+post_extract() {
+    mv ../wlr-protocols-${_wlr_commit}/* wlr-protocols
+}
