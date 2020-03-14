@@ -1,0 +1,20 @@
+# Template file for 'libfprint-vfs0090'
+pkgname=libfprint-vfs0090
+version=0.99.0
+revision=1
+wrksrc="libfprint-V_${version//./_}"
+build_style=meson
+configure_args="-Dudev_rules=false -Dx11-examples=false -Dgtk-examples=false -Ddoc=false"
+hostmakedepends="pkg-config"
+makedepends="libusb-devel nss-devel glib-devel gdk-pixbuf-devel pixman-devel"
+short_desc="Support for consumer fingerprint reader devices (VFS 0090)"
+maintainer="a <a@a.a>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/3v1n0/libfprint"
+distfiles="https://github.com/3v1n0/libfprint/archive/V_${version//./_}.tar.gz"
+checksum=5067e14e9a9e7e07fb2b6f7a854ef7beee3a47d539bad58dc18fa29870327378
+
+post_install() {
+	vmkdir usr/lib/udev/rules.d
+        vinstall $FILESDIR/60-fprint-autosuspend.rules 644 usr/lib/udev/rules.d
+}
