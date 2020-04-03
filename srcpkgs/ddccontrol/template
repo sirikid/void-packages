@@ -1,0 +1,35 @@
+# Template file for 'ddccontrol'
+pkgname=ddccontrol
+version=0.4.4
+revision=1
+archs="i686* x86_64*"
+build_style=gnu-configure
+hostmakedepends="autoconf automake gettext-devel intltool libtool pkg-config tar"
+makedepends="gtk+-devel i2c-tools-devel libxml2-devel pciutils-devel"
+depends="ddccontrol-db"
+short_desc="Software to control monitor - brightness, contrast, RGB color levels"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/ddccontrol/ddccontrol"
+distfiles="https://github.com/ddccontrol/ddccontrol/archive/$version.tar.gz"
+checksum=aafbb16ac4f4edfe3fcc5feec1eb5729aaf86e3b0f31f9d707ba1406bb404817
+
+pre_configure() {
+	./autogen.sh
+}
+
+libddccontrol_package() {
+	short_desc+=" - shared library"
+	pkg_install() {
+		vmove usr/lib/*.so
+	}
+}
+
+libddccontrol-devel_package() {
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/lib/*.a
+		vmove usr/lib/pkgconfig
+		vmove usr/include
+	}
+}

@@ -3856,3 +3856,4 @@ libbudgie-private.so.0 budgie-desktop-10.5.1_1
 libbudgietheme.so.0 budgie-desktop-10.5.1_1
 libbudgie-plugin.so.0 budgie-desktop-10.5.1_1
 libslirp.so.0 libslirp-4.2.0_1
+libddccontrol.so.0 libddccontrol-0.4.4_1
