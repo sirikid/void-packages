@@ -1,0 +1,17 @@
+# Template file for 'ddccontrol-db'
+pkgname=ddccontrol-db
+version=20190826
+revision=1
+archs=noarch
+build_style=gnu-configure
+hostmakedepends="autoconf automake gettext-devel intltool libtool"
+short_desc="DDC Control Monitor Database"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/ddccontrol/ddccontrol-db"
+distfiles="https://github.com/ddccontrol/ddccontrol-db/archive/$version.tar.gz"
+checksum=359b09333c2749911dc98eb366f6f0330dc01c3fcfa0a3c0f922d046659b3c34
+
+pre_configure() {
+	./autogen.sh
+}
