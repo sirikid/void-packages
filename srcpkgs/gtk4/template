@@ -1,6 +1,6 @@
 # Template file for 'gtk4'
 pkgname=gtk4
-version=3.98.0
+version=3.98.2
 revision=1
 wrksrc="gtk-${version}"
 build_style=meson
@@ -37,7 +37,7 @@ maintainer="Enno Boland <gottox@voidlinux.org>"
 license="LGPL-2.1-or-later"
 homepage="https://www.gtk.org/"
 distfiles="${GNOME_SITE}/gtk/${version%.*}/gtk-${version}.tar.xz"
-checksum=d5fbe6c29ebd47c791c3537376bb0cdf85ae559cc164cd1957b1b397b89dc2ae
+checksum=ad4d7c7d3a52065029f23cc75d22a467c8c9f02a3bf0abb355ee793b2933fdae
 patch_args="-Np1"
 
 # Package build options
