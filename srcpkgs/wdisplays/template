@@ -1,0 +1,20 @@
+# Template file for 'wdisplays'
+pkgname=wdisplays
+_commit=0faafdc04d7dd47d3a4e385f348cb9d267f2e60d
+version=0
+revision=1
+wrksrc="$pkgname-$_commit"
+build_style=meson
+build_helper=gir
+hostmakedepends="glib-devel pkg-config wayland-protocols"
+makedepends="gtk+3-devel libepoxy-devel"
+short_desc="GUI display configurator for wlroots compositors"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="MIT"
+homepage="https://github.com/cyclopsian/wdisplays"
+distfiles="https://github.com/cyclopsian/wdisplays/archive/$_commit.tar.gz"
+checksum=50134c4fc992a7e825e7677829006c09f060b07a67521eee6ec6eb110d044c09
+
+post_install() {
+	vlicense LICENSE
+}
