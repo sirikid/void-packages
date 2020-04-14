@@ -15,6 +15,11 @@ homepage="https://gitlab.freedesktop.org/mstoeckl/waypipe"
 distfiles="https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v${version}/waypipe-v${version}.tar.gz"
 checksum=95114f0f4e52cbd8d054c3119265d9006c9f39550961dea58f72b984075d7bce
 
+case $XBPS_TARGET_MACHINE in
+	(armv7l*)
+		configure_args+=" -Dc_args='-mfpu=neon'" ;;
+esac
+
 post_install() {
 	vlicense COPYING LICENSE
 }
