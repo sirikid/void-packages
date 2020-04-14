@@ -5,8 +5,8 @@ revision=1
 wrksrc="waypipe-v${version}"
 build_style=meson
 configure_args="-Dc_args='-Wno-error=unused-result'"
-hostmakedepends="pkg-config scdoc"
-makedepends="MesaLib-devel ffmpeg-devel liblz4-devel libva-devel libzstd-devel systemtap-devel wayland-devel wayland-protocols"
+hostmakedepends="pkg-config scdoc wayland-devel"
+makedepends="MesaLib-devel ffmpeg-devel liblz4-devel libva-devel libzstd-devel systemtap-devel wayland-protocols"
 depends="openssh"
 short_desc="Network transparency with Wayland"
 maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
