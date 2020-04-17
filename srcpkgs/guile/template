@@ -5,8 +5,7 @@ revision=1
 build_style=gnu-configure
 configure_args="--disable-static --disable-error-on-warning"
 hostmakedepends="pkg-config texinfo"
-makedepends="gc-devel gmp-devel libatomic_ops-devel libffi-devel libltdl-devel
- libunistring-devel readline-devel"
+makedepends="gc-devel gmp-devel libatomic_ops-devel libffi-devel libltdl-devel libunistring-devel readline-devel"
 short_desc="Portable, embeddable Scheme implementation written in C"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-3.0-or-later, LGPL-3.0-or-later"
@@ -14,6 +13,7 @@ homepage="http://www.gnu.org/software/${pkgname}"
 distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
 checksum=04485e759b2aec44e33cdd06ece28bbb859c1dbef73e8aeac02e4e7ca2fe0e57
 subpackages="libguile guile-devel"
+nostrip="yes"
 
 if [ "$CROSS_BUILD" ]; then
 	# Need host guile to cross compile
@@ -30,10 +30,7 @@ pre_configure() {
 libguile_package() {
 	short_desc+=" - runtime library"
 	pkg_install() {
-		vmove "usr/lib/*.so.*"
-		vmove "usr/lib/libguilereadline*.so"
-		vmkdir usr/share/gdb/auto-load/usr/lib
-		mv ${PKGDESTDIR}/usr/lib/*.scm ${PKGDESTDIR}/usr/share/gdb/auto-load/usr/lib
+		vmove "usr/lib/*.so*"
 	}
 }
 
@@ -45,6 +42,5 @@ guile-devel_package() {
 		vmove usr/include
 		vmove usr/share/aclocal
 		vmove usr/lib/pkgconfig
-		vmove "usr/lib/*.so"
 	}
 }
