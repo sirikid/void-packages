@@ -13,7 +13,6 @@ homepage="http://www.gnu.org/software/${pkgname}"
 distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
 checksum=04485e759b2aec44e33cdd06ece28bbb859c1dbef73e8aeac02e4e7ca2fe0e57
 subpackages="libguile guile-devel"
-nostrip="yes"
 
 if [ "$CROSS_BUILD" ]; then
 	# Need host guile to cross compile
@@ -38,10 +37,10 @@ guile-devel_package() {
 	short_desc+=" - development files"
 	depends="gmp-devel gc-devel guile>=${version}_${revision}"
 	pkg_install() {
-		vmove usr/bin/guile-snarf
 		vmove usr/bin/guile-config
+		vmove usr/bin/guile-snarf
 		vmove usr/include
-		vmove usr/share/aclocal
 		vmove usr/lib/pkgconfig
+		vmove usr/share/aclocal
 	}
 }
