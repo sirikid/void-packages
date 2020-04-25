@@ -37,8 +37,6 @@ guile-devel_package() {
 	short_desc+=" - development files"
 	depends="gmp-devel gc-devel guile>=${version}_${revision}"
 	pkg_install() {
-		vmove usr/bin/guile-config
-		vmove usr/bin/guile-snarf
 		vmove usr/include
 		vmove usr/lib/pkgconfig
 		vmove usr/share/aclocal
