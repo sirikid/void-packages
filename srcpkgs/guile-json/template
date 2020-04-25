@@ -2,6 +2,7 @@
 pkgname=guile-json
 version=3.3.0
 revision=1
+archs=noarch
 build_style=gnu-configure
 hostmakedepends="autoconf automake guile-devel pkg-config"
 short_desc="JSON module for Guile"
