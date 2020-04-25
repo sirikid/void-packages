@@ -7,7 +7,7 @@ configure_args="--with-zlib --enable-guile --disable-static
  --disable-valgrind-tests --disable-rpath
  --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt
  --with-trousers-lib=${XBPS_CROSS_BASE}/usr/lib"
-hostmakedepends="which gettext-devel pkg-config libtool guile-devel"
+hostmakedepends="which gettext-devel pkg-config libtool guile"
 # add autogen when #6550 is solved
 makedepends="zlib-devel lzo-devel readline-devel libgpg-error-devel
  libtasn1-devel libgcrypt-devel p11-kit-devel nettle-devel libidn2-devel
