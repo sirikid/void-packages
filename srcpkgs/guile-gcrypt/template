@@ -1,0 +1,18 @@
+# Template file for 'guile-gcrypt'
+pkgname=guile-gcrypt
+version=0.2.1
+revision=1
+wrksrc="$pkgname"
+build_style=gnu-configure
+hostmakedepends="autoconf automake guile-devel pkg-config texinfo"
+makedepends="libgcrypt-devel"
+short_desc="Guile bindings for libgcrypt"
+maintainer="a <a@a.a>"
+license="GPL-3.0-or-later"
+homepage="https://notabug.org/cwebber/guile-gcrypt"
+distfiles="https://notabug.org/cwebber/${pkgname}/archive/v${version}.tar.gz"
+checksum=8de1bbf5e952e15cd6b03e26701fbfa0c2266d975212543a41c9aa3a01f741e2
+
+pre_configure() {
+	./bootstrap.sh
+}
