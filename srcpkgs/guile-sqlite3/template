@@ -7,7 +7,6 @@ wrksrc="$pkgname"
 build_style=gnu-configure
 hostmakedepends="autoconf automake guile-devel pkg-config"
 makedepends="sqlite-devel"
-depends=""
 short_desc="Guile bindings to SQLite"
 maintainer="a <a@a.a>"
 license="GPL-3.0-or-later"
