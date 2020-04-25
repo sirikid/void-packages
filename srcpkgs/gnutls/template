@@ -19,6 +19,11 @@ homepage="https://gnutls.org"
 distfiles="https://www.gnupg.org/ftp/gcrypt/gnutls/v${version%.*}/gnutls-${version}.tar.xz"
 checksum=32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38
 
+if [ "$CROSS_BUILD" ]; then
+	# Need host guile to cross compile bindings
+	hostmakedepends+=" guile"
+fi
+
 gnutls-devel_package() {
 	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
