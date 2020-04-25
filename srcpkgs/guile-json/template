@@ -5,6 +5,7 @@ revision=1
 archs=noarch
 build_style=gnu-configure
 hostmakedepends="autoconf automake guile-devel pkg-config"
+makedepends="guile-devel"
 short_desc="JSON module for Guile"
 maintainer="a <a@a.a>"
 license="GPL-3.0-or-later"
