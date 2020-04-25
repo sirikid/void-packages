@@ -43,5 +43,5 @@ guile-gnutls_package() {
 	pkg_install() {
 		vmove usr/share/guile
 		vmove usr/lib/guile
-        }
+	}
 }
