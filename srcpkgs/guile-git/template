@@ -1,0 +1,18 @@
+# Template file for 'guile-git'
+pkgname=guile-git
+version=0.3.0
+revision=1
+wrksrc="$pkgname-v$version"
+build_style=gnu-configure
+hostmakedepends="autoconf automake guile-devel pkg-config texinfo"
+makedepends="libgit2-devel guile-bytestructures"
+short_desc="Guile bindings of libgit2"
+maintainer="a <a@a.a>"
+license="GPL-3.0-or-later LGPL-3.0-or-later"
+homepage="https://gitlab.com/guile-git/guile-git"
+distfiles="https://gitlab.com/guile-git/${pkgname}/-/archive/v${version}/${pkgname}-v${version}.tar.gz"
+checksum=e12fc747cc817e60be07fea44126b077b292dbd1e96a5bee766754d5cc7e4a05
+
+pre_configure() {
+	./bootstrap
+}
