@@ -5,6 +5,7 @@ revision=1
 wrksrc="scheme-bytestructures-${version}"
 build_style=gnu-configure
 hostmakedepends="autoconf automake guile-devel pkg-config"
+makedepends="guile-devel"
 short_desc="Structured access to bytevector contents"
 maintainer="a <a@a.a>"
 license="GPL-3.0-or-later"
