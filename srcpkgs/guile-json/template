@@ -1,0 +1,16 @@
+# Template file for 'guile-json'
+pkgname=guile-json
+version=3.3.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="autoconf automake guile-devel pkg-config"
+short_desc="JSON module for Guile"
+maintainer="a <a@a.a>"
+license="GPL-3.0-or-later"
+homepage="https://savannah.nongnu.org/projects/guile-json/"
+distfiles="${NONGNU_SITE}/guile-json/${pkgname}-${version}.tar.gz"
+checksum=ceb7357308d75a9c49dabbddaecf60c9731eda3512b9275a79bb508f628c783d
+
+pre_configure() {
+	autoreconf -fiv
+}
