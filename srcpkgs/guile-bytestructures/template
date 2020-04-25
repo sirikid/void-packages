@@ -1,0 +1,17 @@
+# Template file for 'guile-bytestructures'
+pkgname=guile-bytestructures
+version=1.0.7
+revision=1
+wrksrc="scheme-bytestructures-${version}"
+build_style=gnu-configure
+hostmakedepends="autoconf automake guile-devel pkg-config"
+short_desc="Structured access to bytevector contents"
+maintainer="a <a@a.a>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/TaylanUB/scheme-bytestructures"
+distfiles="https://github.com/TaylanUB/scheme-bytestructures/archive/v${version}.tar.gz"
+checksum=cb5202289b0aa4fe470bf16a44b810631863afd48bf2677fd4bf53af017b52c8
+
+pre_configure() {
+	autoreconf -fiv
+}
