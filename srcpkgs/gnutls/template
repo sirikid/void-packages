@@ -3,15 +3,21 @@ pkgname=gnutls
 version=3.6.13
 revision=2
 build_style=gnu-configure
-configure_args="--with-zlib --enable-guile --disable-static
- --disable-valgrind-tests --disable-rpath
+configure_args="
+ --disable-rpath
+ --disable-static
+ --disable-valgrind-tests
+ --enable-guile
  --with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt
- --with-trousers-lib=${XBPS_CROSS_BASE}/usr/lib"
-hostmakedepends="which gettext-devel pkg-config libtool guile"
+ --with-trousers-lib=${XBPS_CROSS_BASE}/usr/lib
+ --with-zlib
+"
+hostmakedepends="autoconf automake gettext-devel guile-devel libtool pkg-config"
 # add autogen when #6550 is solved
-makedepends="zlib-devel lzo-devel readline-devel libgpg-error-devel
- libtasn1-devel libgcrypt-devel p11-kit-devel nettle-devel libidn2-devel
- libunistring-devel unbound-devel trousers-devel guile-devel"
+makedepends="guile-devel libatomic_ops-devel libgcrypt-devel
+ libgpg-error-devel libidn2-devel libtasn1-devel libunistring-devel
+ lzo-devel nettle-devel p11-kit-devel readline-devel trousers-devel
+ unbound-devel zlib-devel"
 short_desc="GNU Transport Layer Security library"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-3.0-only, LGPL-2.1-or-later"
