@@ -2,10 +2,13 @@
 pkgname=guile-git
 version=0.3.0
 revision=1
+archs=noarch
 wrksrc="$pkgname-v$version"
 build_style=gnu-configure
 hostmakedepends="autoconf automake guile guile-bytestructures pkg-config texinfo"
 makedepends="libgit2-devel guile-devel"
+depends="libgit2"
+checkdepends="tar"
 short_desc="Guile bindings of libgit2"
 maintainer="a <a@a.a>"
 license="GPL-3.0-or-later, LGPL-3.0-or-later"
