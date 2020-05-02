@@ -1,0 +1,18 @@
+# Template file for 'guix'
+pkgname=guix
+version=1.1.0
+revision=1
+build_style=gnu-configure
+configure_args="--with-bash-completion-dir=/usr/share/bash-completion/completions"
+hostmakedepends="autoconf automake emacs gettext-devel guile-devel pkg-config tar texinfo"
+makedepends="bzip2-devel guile-bytestructures guile-gcrypt guile-git guile-gnutls guile-json guile-sqlite3 guile-ssh libgcrypt-devel libgit2-devel sqlite-devel zlib-devel"
+short_desc="Package management tool for and distribution of the GNU system"
+maintainer="a <a@a.a>"
+license="GPL-3.0-or-later"
+homepage="https://guix.gnu.org/"
+distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
+checksum=5c59106ff4ac497c6097686834b0c914109cf5e44eb6b94ebce818923043640f
+
+pre_configure() {
+	autoreconf -fiv
+}
