@@ -1,0 +1,17 @@
+# Template file for 'guile-ssh'
+pkgname=guile-ssh
+version=0.12.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="autoconf automake guile libtool pkg-config texinfo which"
+makedepends="guile-devel libssh-devel"
+short_desc="Library that provides access to the SSH protocol for GNU Guile programs"
+maintainer="a <a@a.a>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/artyom-poptsov/guile-ssh"
+distfiles="https://github.com/artyom-poptsov/${pkgname}/archive/v${version}.tar.gz"
+checksum=d5b610fa0259187a824dfd26b11a415c1ca7b107912feea8b1a9e7c0fcfbe59c
+
+pre_configure() {
+	autoreconf -fiv
+}
