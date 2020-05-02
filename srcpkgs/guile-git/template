@@ -17,5 +17,9 @@ distfiles="https://gitlab.com/guile-git/${pkgname}/-/archive/v${version}/${pkgna
 checksum=e12fc747cc817e60be07fea44126b077b292dbd1e96a5bee766754d5cc7e4a05
 
 pre_configure() {
+	local shlib
+	shlib=$(xbps-query -p shlib-provides libgit2)
+	vsed -i git/config.scm.in -e "s#@LIBGIT2_LIBDIR@/libgit2#@LIBGIT2_LIBDIR@/${shlib}#"
+
 	./bootstrap
 }
