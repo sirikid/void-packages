@@ -35,7 +35,7 @@ libguile_package() {
 
 guile-devel_package() {
 	short_desc+=" - development files"
-	depends="gmp-devel gc-devel guile>=${version}_${revision}"
+	depends="gmp-devel gc-devel guile>=${version}_${revision} libatomic_ops-devel"
 	pkg_install() {
 		vmove usr/include
 		vmove usr/lib/pkgconfig
