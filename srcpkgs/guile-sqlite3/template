@@ -16,5 +16,9 @@ distfiles="https://notabug.org/guile-sqlite3/${pkgname}/archive/${_commit}.tar.g
 checksum=a6c42759c6c325aee03ac03ef7558936dbe7a9f151b576c2add9b0b4b7c517c0
 
 pre_configure() {
+	local shlib
+	shlib=$(xbps-query -p shlib-provides sqlite)
+	vsed -i sqlite3.scm.in -e "s#@SQLITE_LIBDIR@/libsqlite3#@SQLITE_LIBDIR@/${shlib}#"
+
 	autoreconf -vfi
 }
