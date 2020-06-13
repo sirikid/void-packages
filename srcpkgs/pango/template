@@ -1,7 +1,7 @@
 # Template file for 'pango'
 pkgname=pango
-version=1.44.7
-revision=2
+version=1.45.2
+revision=1
 build_style=meson
 build_helper="gir"
 hostmakedepends="glib-devel help2man pkg-config"
@@ -11,7 +11,7 @@ maintainer="Orphaned <orphan@voidlinux.org>"
 license="LGPL-2.1-or-later"
 homepage="https://www.pango.org/"
 distfiles="${GNOME_SITE}/pango/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=66a5b6cc13db73efed67b8e933584509f8ddb7b10a8a40c3850ca4a985ea1b1f
+checksum=4402960e510039f8efd92153831a056e3a7e03c249205523d36ca8eaccb2b8b4
 
 post_install() {
 	rm -rf -- ${DESTDIR}/usr/share/installed-tests
