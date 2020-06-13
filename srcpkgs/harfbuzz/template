@@ -1,9 +1,10 @@
 # Template file for 'harfbuzz'
 pkgname=harfbuzz
 version=2.6.7
-revision=1
+revision=2
 build_style=gnu-configure
-configure_args="--with-glib --with-freetype --with-cairo --with-icu --with-graphite2"
+build_helper="gir"
+configure_args="--with-glib --with-freetype --with-cairo --with-icu --with-graphite2 $(vopt_with gir gobject)"
 hostmakedepends="automake glib-devel libtool pkg-config"
 makedepends="cairo-devel graphite-devel icu-devel"
 short_desc="OpenType text shaping engine"
@@ -13,6 +14,8 @@ homepage="http://www.freedesktop.org/wiki/Software/HarfBuzz/"
 changelog="https://raw.githubusercontent.com/harfbuzz/harfbuzz/master/NEWS"
 distfiles="https://github.com/harfbuzz/harfbuzz/releases/download/${version}/harfbuzz-${version}.tar.xz"
 checksum=49e481d06cdff97bf68d99fa26bdf785331f411614485d892ea4c78eb479b218
+build_options="gir"
+build_options_default="gir"
 
 pre_configure() {
 	autoreconf -fi
@@ -37,6 +40,7 @@ harfbuzz-devel_package() {
 		vmove usr/lib/pkgconfig
 		vmove usr/lib/cmake
 		vmove "usr/lib/*.so"
+		vmove usr/share/gir-1.0
 		vmove usr/share/gtk-doc
 	}
 }
