@@ -1,8 +1,7 @@
-# Template file for 'emacs-next'
-pkgname=emacs-next
+# Template file for 'emacs-pgtk'
+pkgname=emacs-pgtk
 version=28.0.50
-revision=1
-wrksrc=emacs-dist
+revision=2
 build_style=gnu-configure
 configure_args="
  --with-cairo
@@ -22,7 +21,7 @@ configure_args="
  $(vopt_with xml xml2)
  $(vopt_with xpm)
 "
-hostmakedepends="pkg-config tar autoconf automake texinfo"
+hostmakedepends="autoconf automake git pkg-config tar texinfo"
 makedepends="
  acl-devel
  dbus-devel
@@ -41,16 +40,11 @@ makedepends="
  $(vopt_if xml libxml2-devel)
  $(vopt_if xpm libXpm-devel)
 "
-# depends="emacs-common-${version}_${revision}"
 short_desc="GNU Emacs editor"
 maintainer="a a <a@a.a>"
 license="GPL-3.0-or-later"
-homepage="http://www.gnu.org/software/emacs/"
-distfiles="http://localhost/emacs-dist.tar.lz"
-checksum=78ef8b453bcd0fccf63d94a8c6fe5bdb8ec02a680719a7d67d6514dc7b0bdbbb
+homepage="https://git.sr.ht/~oldosfan/emacs-pgtk"
 replaces="emacs>=0"
-nocross=yes
-nopie=yes
 
 # Package build options
 build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n"
@@ -58,6 +52,10 @@ desc_option_xpm="Enable support for XPM images"
 desc_option_sound="Enable support for sound"
 desc_option_m17n="Enable support for m17n multilingual text processing"
 build_options_default="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n"
+
+do_fetch() {
+	git clone --depth=1 --branch=mashup https://git.sr.ht/~oldosfan/emacs-pgtk $pkgname-$version
+}
 
 pre_configure() {
 	autoreconf -i -f .
