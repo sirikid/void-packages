@@ -1,0 +1,26 @@
+# Template file for 'liblockfile'
+pkgname=liblockfile
+version=1.16
+revision=1
+build_style=gnu-configure
+make_build_target=shared
+make_install_target=install_shared
+short_desc="Standard lockfile library"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-2.0-or-later,LGPL-2.0-or-later"
+homepage="https://github.com/miquels/liblockfile"
+distfiles="https://github.com/miquels/liblockfile/archive/v${version}.tar.gz"
+checksum=dfc552c72a93a28279017e81c9e1924b12cc97e4faca8faf5ddbba6b6f048e01
+
+do_check() {
+	./run-tests.sh
+}
+
+liblockfile-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.a"
+	}
+}
