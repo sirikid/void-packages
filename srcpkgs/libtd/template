@@ -1,0 +1,31 @@
+# Template file for 'libtd'
+pkgname=libtd
+version=1.6.6
+revision=1
+_commit=c78fbe4bc5e31395e08f916816704e8051f27296
+wrksrc="td-${_commit}"
+build_style=cmake
+build_helper=qemu
+hostmakedepends="gperf"
+makedepends="libressl-devel zlib-devel"
+short_desc="Cross-platform library for building Telegram clients"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="BSL-1.0"
+homepage="https://core.telegram.org/tdlib"
+distfiles="https://github.com/tdlib/td/archive/${_commit}.tar.gz"
+checksum=adb84e39d95c3cde8a70d47410acd91af3953fc6ebbca152a1afbef9c7135e1e
+patch_args="-Np1"
+
+if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
+	configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
+	makedepends+=" libatomic-devel"
+fi
+
+libtd-devel_package() {
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove "usr/lib/*.a"
+		vmove usr/include
+		vmove usr/lib/cmake
+	}
+}
