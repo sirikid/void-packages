@@ -22,10 +22,10 @@ if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
 fi
 
 pre_configure() {
-	vsed -e 's/NOT CMAKE_CROSSCOMPILING/YES/g' -e CMakeLists.txt \
-		-e td/generate/CMakeLists.txt -e tdactor/CMakeLists.txt \
-		-e tddb/CMakeLists.txt -e tdutils/CMakeLists.txt \
-		-e tdutils/generate/CMakeLists.txt -e test/CMakeLists.txt
+	vsed -e 's/NOT CMAKE_CROSSCOMPILING/YES/g' -i CMakeLists.txt \
+		-i td/generate/CMakeLists.txt -i tdactor/CMakeLists.txt \
+		-i tddb/CMakeLists.txt -i tdutils/CMakeLists.txt \
+		-i tdutils/generate/CMakeLists.txt -i test/CMakeLists.txt
 }
 
 libtd-devel_package() {
