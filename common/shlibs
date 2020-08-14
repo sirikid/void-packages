@@ -3979,3 +3979,5 @@ libfcft.so.3 fcft-2.2.2_1
 libaml.so.0 aml-0.1.0_1
 libneatvnc.so.0 neatvnc-0.2.0_1
 libPantomime.so.1.3 pantomime-1.3.0_1
+libAddresses.so.0 addresses-devel-0.4.8_1
+libAddressView.so.0 addresses-devel-0.4.8_1

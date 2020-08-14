@@ -1,0 +1,42 @@
+# Template file for 'addresses'
+pkgname=addresses
+version=0.4.8
+revision=1
+wrksrc=Addresses-0.4.8
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="gnustep-make which"
+makedepends="gnustep-base-devel gnustep-gui-devel"
+short_desc="Versatile Address Book application and framework"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://www.nongnu.org/gap/addresses/index.html"
+distfiles="${NONGNU_SITE}/gap/Addresses-${version}.tar.gz"
+checksum=329531bfd31db1845f3af385c1c2448f308b1bf28af5ee7d4f50f403dbb6ac0a
+
+pre_build() {
+	. /usr/share/GNUstep/Makefiles/GNUstep.sh
+}
+
+pre_install() {
+	. /usr/share/GNUstep/Makefiles/GNUstep.sh
+}
+
+addresses-app_package() {
+	short_desc+=" - application"
+	depends+="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/bin
+		vmove usr/lib/GNUstep/Applications
+	}
+}
+
+addresses-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove "usr/lib/*.so"
+		vmove "usr/lib/GNUstep/Frameworks"
+		vmove usr/include
+	}
+}
