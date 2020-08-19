@@ -12,7 +12,6 @@ license="GPL-3.0-or-later, LGPL-3.0-or-later"
 homepage="http://www.gnu.org/software/${pkgname}"
 distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
 checksum=04485e759b2aec44e33cdd06ece28bbb859c1dbef73e8aeac02e4e7ca2fe0e57
-subpackages="libguile guile-devel"
 nostrip="yes"
 
 if [ "$CROSS_BUILD" ]; then
@@ -27,20 +26,22 @@ pre_configure() {
 	esac
 }
 
-libguile_package() {
-	short_desc+=" - runtime library"
-	pkg_install() {
-		vmove "usr/lib/*.so*"
-	}
-}
-
 guile-devel_package() {
 	short_desc+=" - development files"
 	depends="gmp-devel gc-devel guile>=${version}_${revision}"
 	pkg_install() {
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
 		vmove usr/bin/guile-config
 		vmove usr/include
-		vmove usr/share/aclocal
 		vmove usr/lib/pkgconfig
+		vmove usr/share/aclocal
+	}
+}
+
+libguile_package() {
+	short_desc+=" - runtime library"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
 	}
 }
