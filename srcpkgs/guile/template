@@ -30,7 +30,6 @@ guile-devel_package() {
 	short_desc+=" - development files"
 	depends="gmp-devel gc-devel guile>=${version}_${revision}"
 	pkg_install() {
-		vmove "usr/lib/*.a"
 		vmove "usr/lib/*.so"
 		vmove usr/bin/guile-config
 		vmove usr/include
