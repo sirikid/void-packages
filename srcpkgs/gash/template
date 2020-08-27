@@ -1,0 +1,19 @@
+# Template file for 'gash'
+pkgname=gash
+version=0.2.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="autoconf automake pkg-config texinfo"
+makedepends="guile-devel"
+depends="guile"
+short_desc="POSIX-compatible shell written in Guile Scheme"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://savannah.nongnu.org/projects/gash/"
+distfiles="https://download.savannah.nongnu.org/releases/gash/gash-0.2.0.tar.gz"
+checksum=ee4158040800fd3cf5e02c32ee9a659a067c592f999b5c01e943da04cbf7a08e
+
+pre_configure() {
+	vsed -i configure.ac -e '/GUILE_PKG/s/[[]2.2 2.0]/[3.0 2.2 2.0]/'
+	autoreconf -fiv
+}
