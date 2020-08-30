@@ -1,0 +1,18 @@
+# Template file for 'python3-ufo2ft'
+pkgname=python3-ufo2ft
+version=2.15.0
+revision=1
+wrksrc="ufo2ft-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-booleanOperations python3-compreffor python3-fonttools"
+short_desc="Bridge from UFOs to FontTools objects"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="MIT"
+homepage="https://github.com/googlefonts/ufo2ft"
+distfiles="${PYPI_SITE}/u/ufo2ft/ufo2ft-${version}.zip"
+checksum=afcbedcdc9b77078046eb4cf3ef2e2ee005dc4712600a9aed7ec055e4d0c63f2
+
+post_install() {
+	vlicense LICENSE
+}
