@@ -1,0 +1,18 @@
+# Template file for 'python3-pyclipper'
+pkgname=python3-pyclipper
+version=1.2.0
+revision=1
+wrksrc="pyclipper-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="python3-devel clipper-devel"
+short_desc="Cython wrapper for the Clipper library"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="MIT"
+homepage="https://github.com/fonttools/pyclipper"
+distfiles="${PYPI_SITE}/p/pyclipper/pyclipper-${version}.zip"
+checksum=7a9035ca6732dcef3ef33f98d9a844bb5f2be16bd659300c38ef366aac2e3a47
+
+post_install() {
+	vlicense LICENSE
+}
