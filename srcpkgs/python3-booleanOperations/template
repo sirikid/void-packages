@@ -1,0 +1,18 @@
+# Template file for 'python3-booleanOperations'
+pkgname=python3-booleanOperations
+version=0.9.0
+revision=1
+wrksrc="booleanOperations-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-fonttools python3-pyclipper"
+short_desc="Boolean operations on paths"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="MIT"
+homepage="https://github.com/typemytype/booleanOperations"
+distfiles="${PYPI_SITE}/b/booleanOperations/booleanOperations-${version}.zip"
+checksum=8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8
+
+post_install() {
+	vlicense LICENSE
+}
