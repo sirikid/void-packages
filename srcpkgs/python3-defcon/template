@@ -1,0 +1,17 @@
+# Template file for 'python3-defcon'
+pkgname=python3-defcon
+version=0.7.2
+revision=1
+wrksrc="defcon-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+short_desc="Set of flexible objects for representing UFO data"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="MIT"
+homepage="https://github.com/robotools/defcon"
+distfiles="${PYPI_SITE}/d/defcon/defcon-${version}.zip"
+checksum=1967eaa23dcc8e1cbe3bd130aae4d9ddb72027b62d3e23eeb640065cfbd6d8d1
+
+post_install() {
+	vlicense License.txt LICENSE
+}
