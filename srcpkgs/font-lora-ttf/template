@@ -1,0 +1,22 @@
+# Template file for 'font-lora-ttf'
+pkgname=font-lora-ttf
+version=2.210
+revision=1
+archs="noarch"
+wrksrc="Lora-Cyrillic-${version}"
+build_wrksrc="sources"
+hostmakedepends="python3-fontmake"
+short_desc="Well-balanced contemporary serif with roots in calligraphy"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="OFL-1.1"
+homepage="well-balanced contemporary serif with roots in calligraphy"
+distfiles="https://github.com/cyrealtype/Lora-Cyrillic/archive/v${version}.tar.gz"
+checksum=9f7e2819639182e69eb03daf36af5b8059737108441547f500ccc8f751733806
+
+do_build() {
+	build.sh
+}
+
+do_install() {
+	false
+}
