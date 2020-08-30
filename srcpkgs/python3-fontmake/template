@@ -1,0 +1,14 @@
+# Template file for 'python3-fontmake'
+pkgname=python3-fontmake
+version=2.2.0
+revision=1
+wrksrc="fontmake-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-attrs python3-fonttools python3-ufo2ft"
+short_desc="Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="Apache-2.0"
+homepage="https://github.com/googlefonts/fontmake"
+distfiles="${PYPI_SITE}/f/fontmake/fontmake-${version}.zip"
+checksum=e7a39524ec4cfdbd9cdf9590997f848aac85ccb22583c8b9f933e78eec32a626
