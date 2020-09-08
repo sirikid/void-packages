@@ -1,7 +1,8 @@
-# Template file for 'guile'
-pkgname=guile
+# Template file for 'guile2.0'
+pkgname=guile2.0
 version=2.0.14
 revision=9
+wrksrc="guile-${version}"
 build_style=gnu-configure
 configure_args="--disable-static --disable-error-on-warning"
 hostmakedepends="pkg-config texinfo"
@@ -11,13 +12,14 @@ short_desc="Portable, embeddable Scheme implementation written in C"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-3.0-or-later, LGPL-3.0-or-later"
 homepage="http://www.gnu.org/software/guile"
-distfiles="${GNU_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
+distfiles="${GNU_SITE}/guile/guile-${version}.tar.gz"
 checksum=8aeb2f353881282fe01694cce76bb72f7ffdd296a12c7a1a39255c27b0dfe5f1
-subpackages="libguile guile-devel"
+subpackages="libguile2.0 guile2.0-devel"
+replaces="guile>=0"
 
 if [ "$CROSS_BUILD" ]; then
 	# Need host guile to cross compile
-	hostmakedepends+=" guile"
+	hostmakedepends+=" guile2.0"
 fi
 
 pre_configure() {
@@ -27,8 +29,9 @@ pre_configure() {
 	esac
 }
 
-libguile_package() {
+libguile2.0_package() {
 	short_desc+=" - runtime library"
+	replaces="libguile>=0"
 	pkg_install() {
 		vmove "usr/lib/*.so.*"
 		vmove "usr/lib/libguilereadline*.so"
@@ -37,9 +40,10 @@ libguile_package() {
 	}
 }
 
-guile-devel_package() {
+guile2.0-devel_package() {
 	short_desc+=" - development files"
-	depends="gmp-devel gc-devel guile>=${version}_${revision}"
+	depends="gmp-devel gc-devel guile2.0>=${version}_${revision}"
+	replaces="guile-devel>=0"
 	pkg_install() {
 		vmove usr/bin/guile-config
 		vmove usr/include
