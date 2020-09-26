@@ -1,13 +1,13 @@
 # Template file for 'geda'
 pkgname=geda
 version=1.10.0
-revision=3
+revision=4
 wrksrc="${pkgname}-gaf-${version}"
 build_style=gnu-configure
 configure_args="--disable-update-xdg-database"
-hostmakedepends="pkg-config guile python desktop-file-utils shared-mime-info"
-makedepends="gamin-devel gc-devel gtk+-devel guile-devel python-devel libatomic_ops-devel"
-depends="guile geda-data"
+hostmakedepends="pkg-config guile2.0 python desktop-file-utils shared-mime-info"
+makedepends="gamin-devel gc-devel gtk+-devel guile2.0-devel python-devel libatomic_ops-devel"
+depends="guile2.0 geda-data"
 checkdepends="perl"
 short_desc="Electronic Design Automation tool"
 maintainer="Jürgen Buchmüller <pullmoll@t-online.de>"
@@ -43,7 +43,7 @@ geda-devel_package() {
 	}
 }
 geda-doc_package() {
-	archs=noarch
+	archs="*"
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - documentation and exmaple files"
 	pkg_install() {
@@ -51,7 +51,7 @@ geda-doc_package() {
 	}
 }
 geda-data_package() {
-	archs=noarch
+	archs="*"
 	short_desc+=" - data files"
 	pkg_install() {
 		vmove usr/share/gEDA
