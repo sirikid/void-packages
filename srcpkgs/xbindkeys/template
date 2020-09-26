@@ -1,11 +1,11 @@
 # Template file for 'xbindkeys'
 pkgname=xbindkeys
 version=1.8.7
-revision=1
+revision=2
 build_style=gnu-configure
 hostmakedepends="pkg-config"
-makedepends="libX11-devel guile-devel guile gc-devel"
-depends="guile"
+makedepends="libX11-devel guile2.0-devel guile2.0 gc-devel"
+depends="guile2.0"
 short_desc="Launch shell commands with your keyboard or your mouse under X"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-2.0-or-later"
