@@ -1,12 +1,12 @@
 # Template file for 'autogen'
 pkgname=autogen
 version=5.18.16
-revision=1
+revision=2
 build_style=gnu-configure
 configure_args="--disable-static --disable-dependency-tracking --without-libregex"
-hostmakedepends="guile pkg-config perl tar which"
-makedepends="guile guile-devel libatomic_ops-devel libxml2-devel gc-devel"
-depends="guile perl"
+hostmakedepends="pkg-config perl tar which"
+makedepends="guile2.0-devel libatomic_ops-devel libxml2-devel gc-devel"
+depends="guile2.0 perl"
 short_desc="Automated Program Generator"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-3.0-or-later"
@@ -19,7 +19,7 @@ CFLAGS="-Wno-error=format-truncation -Wno-error=format-overflow
 	-Wno-error=unused-parameter"
 
 if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" autogen guile-devel"
+	hostmakedepends+=" autogen guile2.0-devel"
 fi
 
 post_install() {
