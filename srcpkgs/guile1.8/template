@@ -1,12 +1,12 @@
 # Template file for 'guile1.8'
 pkgname=guile1.8
 version=1.8.8
-revision=3
+revision=4
 wrksrc=${pkgname/1.8/}-${version}
 build_style="gnu-configure"
 configure_args="--disable-static --disable-error-on-warning --program-suffix='-1.8'"
 make_build_args="GUILE_FOR_BUILD=guile"
-hostmakedepends="pkg-config guile"
+hostmakedepends="pkg-config guile2.0"
 makedepends="gmp-devel libltdl-devel ncurses-devel readline-devel"
 short_desc="Portable, embeddable Scheme implementation written in C"
 maintainer="newbluemoon <blaumolch@mailbox.org>"
