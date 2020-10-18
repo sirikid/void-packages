@@ -1,0 +1,12 @@
+# Template file for 'certbot-dns-vultr'
+pkgname=certbot-dns-vultr
+version=1.0.3
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+short_desc="Vultr DNS authenticator plugin for Certbot"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="Zlib"
+homepage="https://github.com/lezgomatt/certbot-dns-vultr"
+distfiles="${PYPI_SITE}/c/certbot-dns-vultr/certbot-dns-vultr-1.0.3.tar.gz"
+checksum=440de70e3a134b7748f249701690a554261bf659f21bd938ee81a592db9b502c
