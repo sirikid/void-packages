@@ -1,0 +1,21 @@
+# Template file for 'emacs-pgtk'
+pkgname=emacs-pgtk
+version=28.0.50
+revision=1
+_commit=9c7750758271139c55313e6e153c94d30123a6cc
+wrksrc="${pkgname/-pgtk/}-$_commit"
+build_style=gnu-configure
+configure_args="--with-cairo --with-modules --with-pgtk"
+hostmakedepends="autoconf automake pkg-config tar texinfo"
+makedepends="dbus-devel gnutls-devel gtk+3-devel jansson-devel libxml2-devel"
+short_desc="GNU Emacs with pure Gtk3"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/masm11/emacs"
+distfiles="https://github.com/masm11/emacs/archive/$_commit.tar.gz"
+checksum=93706b9468bd2a6ed7ecf638b7c50cd305f79eab3e5cca9dda58947f5ce14241
+conflicts="emacs emacs-common emacs-gtk2 emacs-gtk3 emacs-x11"
+
+pre_configure() {
+	./autogen.sh
+}
