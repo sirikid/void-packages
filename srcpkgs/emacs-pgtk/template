@@ -8,6 +8,7 @@ build_style=gnu-configure
 configure_args="--with-cairo --with-modules --with-pgtk"
 hostmakedepends="autoconf automake pkg-config tar texinfo"
 makedepends="dbus-devel gnutls-devel gtk+3-devel jansson-devel libxml2-devel"
+depends="gsettings-desktop-schemas"
 short_desc="GNU Emacs with pure Gtk3"
 maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
 license="GPL-3.0-or-later"
