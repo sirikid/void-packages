@@ -1,0 +1,18 @@
+# Template file for 'loko'
+pkgname=loko
+version=0.6.0
+revision=1
+build_style=gnu-makefile
+make_install_args="install install-info"
+make_check_target="samples"
+hostmakedepends="texinfo"
+short_desc="Optimizing Scheme compiler"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://scheme.fail"
+distfiles="https://scheme.fail/releases/loko-${version}.tar.gz"
+checksum=ba3212b125ffc9c553e0f4361a2b09d7426fa325a23973a5ae9415243555dca0
+
+pre_configure() {
+	vsed -e 's/DISTDIR/DESTDIR/g' -i GNUmakefile
+}
