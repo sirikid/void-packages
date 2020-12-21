@@ -23,6 +23,13 @@ if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+=" guile3.0 guile3.0-devel"
 fi
 
+if [ "$XBPS_TARGET_LIBC" = musl ]; then
+	hostmakedepends+=" autoconf automake"
+	pre_configure() {
+		vsed -i test-suite/Makefile.am -e '/i18n.test/d'
+	}
+fi
+
 libguile3.0_package() {
 	short_desc+=" - runtime library"
 	pkg_install() {
