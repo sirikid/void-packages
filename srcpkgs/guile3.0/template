@@ -38,6 +38,7 @@ pre_configure() {
 			-e '/reader.test/d' \
 			-e '/suspendable-ports.test/d' \
 			-e '/time.test/d'
+		autoreconf -fiv
 	fi
 }
 
