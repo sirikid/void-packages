@@ -26,7 +26,15 @@ fi
 if [ "$XBPS_TARGET_LIBC" = musl ]; then
 	hostmakedepends+=" autoconf automake"
 	pre_configure() {
-		vsed -i test-suite/Makefile.am -e '/i18n.test/d'
+		vsed -i test-suite/Makefile.am \
+			-e '/encoding-escapes.test/d' \
+			-e '/encoding-iso88597.test/d' \
+			-e '/i18n.test/d' \
+			-e '/iconv.test/d' \
+			-e '/r6rs-ports.test/d' \
+			-e '/reader.test/d' \
+			-e '/suspendable-ports.test/d' \
+			-e '/time.test/d'
 	}
 fi
 
