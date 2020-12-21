@@ -25,7 +25,10 @@ fi
 
 if [ "$XBPS_TARGET_LIBC" = musl ]; then
 	hostmakedepends+=" autoconf automake"
-	pre_configure() {
+fi
+
+pre_configure() {
+	if [ "$XBPS_TARGET_LIBC" = musl ]; then
 		vsed -i test-suite/Makefile.am \
 			-e '/encoding-escapes.test/d' \
 			-e '/encoding-iso88597.test/d' \
@@ -35,8 +38,9 @@ if [ "$XBPS_TARGET_LIBC" = musl ]; then
 			-e '/reader.test/d' \
 			-e '/suspendable-ports.test/d' \
 			-e '/time.test/d'
-	}
-fi
+	fi
+}
+
 
 libguile3.0_package() {
 	short_desc+=" - runtime library"
