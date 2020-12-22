@@ -23,23 +23,9 @@ if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+=" guile3.0 guile3.0-devel"
 fi
 
-if [ "$XBPS_TARGET_LIBC" = musl ]; then
-	hostmakedepends+=" autoconf automake gettext-devel libtool"
-fi
-
 pre_configure() {
 	if [ "$XBPS_TARGET_LIBC" = musl ]; then
 		rm test-suite/tests/{encoding-escapes,encoding-iso88597,i18n,iconv,r6rs-ports,reader,suspendable-ports,time}.test
-		vsed -i test-suite/Makefile.am \
-			-e '/encoding-escapes.test/d' \
-			-e '/encoding-iso88597.test/d' \
-			-e '/i18n.test/d' \
-			-e '/iconv.test/d' \
-			-e '/r6rs-ports.test/d' \
-			-e '/reader.test/d' \
-			-e '/suspendable-ports.test/d' \
-			-e '/time.test/d'
-		autoreconf -fiv
 	fi
 }
 
