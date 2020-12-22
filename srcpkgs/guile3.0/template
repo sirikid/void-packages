@@ -29,6 +29,7 @@ fi
 
 pre_configure() {
 	if [ "$XBPS_TARGET_LIBC" = musl ]; then
+		rm test-suite/tests/{encoding-escapes,encoding-iso88597,i18n,iconv,r6rs-ports,reader,suspendable-ports,time}.test
 		vsed -i test-suite/Makefile.am \
 			-e '/encoding-escapes.test/d' \
 			-e '/encoding-iso88597.test/d' \
