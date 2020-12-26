@@ -4040,3 +4040,5 @@ libndr-samba4.so samba-libs-4.13.2_1
 libsmb-transport-samba4.so samba-libs-4.13.2_1
 libutil-cmdline-samba4.so samba-libs-4.13.2_1
 libwinbind-client-samba4.so samba-libs-4.13.2_1
+libguile-3.0.so.1 libguile3.0-3.0.4_1
+guile-readline.so.0 guile3.0-3.0.4_1
