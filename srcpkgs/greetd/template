@@ -1,0 +1,32 @@
+# Template file for 'greetd'
+pkgname=greetd
+version=0.7.0
+revision=1
+build_style=cargo
+hostmakedepends="scdoc"
+makedepends="pam-devel"
+short_desc="Minimal and flexible login manager daemon"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://git.sr.ht/~kennylevinsen/greetd"
+distfiles="https://git.sr.ht/~kennylevinsen/greetd/archive/$version.tar.gz"
+checksum=c84214490479f291ed3f27424e6c020a9f3115f5745c90a05f7508999b1b69a3
+
+post_build() {
+	for scd in man/*.scd; do
+		scdoc < "$scd" > "${scd/.scd/.roff}"
+	done
+}
+
+do_install() {
+	vbin target/"$XBPS_RUST_TARGET"/release/{agreety,fakegreet,greetd}
+
+	vinstall "$FILESDIR"/greetd.pam 644 /etc/pam.d greetd
+
+	vconf config.toml
+
+	vman man/agreety-1.roff agreety.1
+	vman man/greetd-1.roff greetd.1
+	vman man/greetd-5.roff greetd.5
+	vman man/greetd-ipc-7.roff greetd-ipc.7
+}
