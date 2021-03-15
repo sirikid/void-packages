@@ -1,0 +1,16 @@
+# Template file for 'ndstool'
+pkgname=ndstool
+version=2.1.2
+revision=1
+build_style=gnu-configure
+hostmakedepends="autoconf automake"
+short_desc="Tool for packing .nds files"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https:///devkitpro.org"
+distfiles="https://github.com/devkitPro/ndstool/archive/v${version}.tar.gz"
+checksum=e58196e1287edbf54a965b28b4b2e92c0df7c6d8e9e1a40fccc37c5aa05f9ebc
+
+pre_configure() {
+	./autogen.sh
+}
