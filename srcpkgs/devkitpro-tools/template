@@ -1,0 +1,17 @@
+# Template file for 'devkitpro-tools'
+pkgname=devkitpro-tools
+version=1.2.0
+revision=1
+wrksrc="general-tools-${version}"
+build_style=gnu-configure
+hostmakedepends="autoconf automake"
+short_desc="Tools for compiling resources to NDS compatible formats"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://devkitpro.org"
+distfiles="https://github.com/devkitPro/general-tools/archive/v${version}.tar.gz"
+checksum=8a7ee4e23378a94bdd0b94a89442075ef1af6fa6aa01cdb252a9ebaf4173e8e1
+
+pre_configure() {
+	./autogen.sh
+}
