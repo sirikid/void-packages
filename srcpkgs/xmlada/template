@@ -1,0 +1,54 @@
+# Template file for 'xmlada'
+pkgname=xmlada
+version=21.0.0
+revision=1
+build_style=configure
+configure_args="--prefix=/usr --enable-shared"
+hostmakedepends="gprbuild-bootstrap" # gprbuild depends on xmlada
+short_desc="XML/Ada toolkit"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/AdaCore/xmlada"
+distfiles="https://github.com/AdaCore/xmlada/archive/v${version}.tar.gz"
+checksum=923024931f0c57451aa52cb9a3333874646102cb75957f27e3689670f90edc1e
+patch_args="-Np1"
+
+post_install() {
+	if [ "$XBPS_TARGET_MACHINE" = x86_64 ]; then
+		rm "$DESTDIR"/usr/lib64
+	fi
+}
+
+xmlada-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/share
+		vmove "usr/lib/xmlada/xmlada_dom.relocatable/*.ali"
+		vmove "usr/lib/xmlada/xmlada_dom.static-pic/*.a"
+		vmove "usr/lib/xmlada/xmlada_dom.static-pic/*.ali"
+		vmove "usr/lib/xmlada/xmlada_dom.static/*.a"
+		vmove "usr/lib/xmlada/xmlada_dom.static/*.ali"
+		vmove "usr/lib/xmlada/xmlada_input.relocatable/*.ali"
+		vmove "usr/lib/xmlada/xmlada_input.static-pic/*.a"
+		vmove "usr/lib/xmlada/xmlada_input.static-pic/*.ali"
+		vmove "usr/lib/xmlada/xmlada_input.static/*.a"
+		vmove "usr/lib/xmlada/xmlada_input.static/*.ali"
+		vmove "usr/lib/xmlada/xmlada_sax.relocatable/*.ali"
+		vmove "usr/lib/xmlada/xmlada_sax.static-pic/*.a"
+		vmove "usr/lib/xmlada/xmlada_sax.static-pic/*.ali"
+		vmove "usr/lib/xmlada/xmlada_sax.static/*.a"
+		vmove "usr/lib/xmlada/xmlada_sax.static/*.ali"
+		vmove "usr/lib/xmlada/xmlada_schema.relocatable/*.ali"
+		vmove "usr/lib/xmlada/xmlada_schema.static-pic/*.a"
+		vmove "usr/lib/xmlada/xmlada_schema.static-pic/*.ali"
+		vmove "usr/lib/xmlada/xmlada_schema.static/*.a"
+		vmove "usr/lib/xmlada/xmlada_schema.static/*.ali"
+		vmove "usr/lib/xmlada/xmlada_unicode.relocatable/*.ali"
+		vmove "usr/lib/xmlada/xmlada_unicode.static-pic/*.a"
+		vmove "usr/lib/xmlada/xmlada_unicode.static-pic/*.ali"
+		vmove "usr/lib/xmlada/xmlada_unicode.static/*.a"
+		vmove "usr/lib/xmlada/xmlada_unicode.static/*.ali"
+	}
+}
