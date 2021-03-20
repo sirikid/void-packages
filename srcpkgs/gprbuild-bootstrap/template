@@ -18,6 +18,7 @@ checksum='
  2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557
  923024931f0c57451aa52cb9a3333874646102cb75957f27e3689670f90edc1e
 '
+nocross="No point in cross compiling bootstrap package"
 
 _bootstrap_flags="--prefix=/usr --with-kb=../gprconfig_kb-${version} --with-xmlada=../xmlada-${version}"
 
