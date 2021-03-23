@@ -1,0 +1,44 @@
+# Template file for 'authinfo'
+pkgname=authinfo
+version=0.1
+revision=1
+_commit=0098545479fa81234ebc1c2951610cb8c70f5c44
+wrksrc="authinfo-$_commit"
+build_style=gnu-configure
+hostmakedepends="autoconf automake libtool pkg-config"
+makedepends="gpgme-devel libassuan-devel python3-devel"
+short_desc="KISS password manager"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/aartamonau/authinfo"
+distfiles="https://github.com/aartamonau/authinfo/archive/$_commit.tar.gz"
+checksum=7fdd8ce180b244ef9b4f8b39104c298a9c3b59ac6a5884546052a6bf38740ae4
+
+pre_configure() {
+	./bootstrap
+}
+
+libauthinfo_package() {
+	short_desc+=" (shared library)"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}
+
+libauthinfo-devel_package() {
+	short_desc+=" (development files)"
+	pkg_install() {
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+	}
+}
+
+libauthinfo-python3_package() {
+	short_desc+=" (Python3 bindings)"
+	pkg_install() {
+		vmove usr/lib/python3.9
+		vmove usr/share/doc/authinfo/offlineimap.py
+	}
+}
