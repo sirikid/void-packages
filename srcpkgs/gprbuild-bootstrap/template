@@ -1,0 +1,44 @@
+# Template file for 'gprbuild-bootstrap'
+pkgname=gprbuild-bootstrap
+version=21.0.0
+revision=1
+wrksrc="gprbuild-${version}"
+depends="gprconfig-kb"
+short_desc="Multi-language build system (bootstrap)"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/AdaCore/gprbuild"
+distfiles="
+ https://github.com/AdaCore/gprbuild/archive/v${version}.tar.gz>gprbuild-${version}.tar.gz
+ https://github.com/AdaCore/gprconfig_kb/archive/v${version}.tar.gz>gprconfig_kb-${version}.tar.gz
+ https://github.com/AdaCore/xmlada/archive/v${version}.tar.gz>xmlada-${version}.tar.gz
+"
+checksum='
+ 54b7d1a3298160109aaee4d8c263c1ab3ab4abae75d354f3e90a4c51639167a2
+ 2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557
+ 923024931f0c57451aa52cb9a3333874646102cb75957f27e3689670f90edc1e
+'
+nocross="No point in cross compiling bootstrap package"
+
+_bootstrap_flags="--prefix=/usr --with-kb=../gprconfig_kb-${version} --with-xmlada=../xmlada-${version}"
+
+do_build() {
+	./bootstrap.sh --build $_bootstrap_flags
+}
+
+do_install() {
+	env DESTDIR="$DESTDIR" ./bootstrap.sh --install $_bootstrap_flags
+}
+
+post_install() {
+	if [ "$XBPS_TARGET_MACHINE" = x86_64 ]; then
+		rm "$DESTDIR"/usr/lib64
+	fi
+}
+
+gprconfig-kb_package() {
+	short_desc="${short_desc/bootstrap/config knowledge base}"
+	pkg_install() {
+		vmove usr/share/gprconfig
+	}
+}

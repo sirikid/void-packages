@@ -1,0 +1,25 @@
+# Template file for 'gprbuild'
+pkgname=gprbuild
+version=21.0.0
+revision=1
+build_style=gnu-makefile
+hostmakedepends="gprbuild-bootstrap which"
+makedepends="xmlada-devel"
+depends="gprconfig-kb"
+short_desc="Multi-language build system"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/AdaCore/gprbuild"
+distfiles="https://github.com/AdaCore/gprbuild/archive/v${version}.tar.gz"
+checksum=54b7d1a3298160109aaee4d8c263c1ab3ab4abae75d354f3e90a4c51639167a2
+conflicts="gprbuild-bootstrap"
+
+post_configure() {
+	vsed -i Makefile -e '/^LIB_INSTALLER/s/--prefix=/--prefix=${DESTDIR}/'
+}
+
+post_install() {
+	if [ "$XBPS_TARGET_MACHINE" = x86_64 ]; then
+		rm "$DESTDIR"/usr/lib64
+	fi
+}
