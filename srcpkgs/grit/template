@@ -1,0 +1,18 @@
+# Template file for 'grit'
+pkgname=grit
+version=0.8.16
+revision=1
+build_style=gnu-configure
+hostmakedepends="autoconf automake libtool which"
+makedepends="freeimage-devel"
+short_desc="Game Raster Image Transmogrifier"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+# FIXME: license
+license="GPL-3.0-or-later"
+homepage="https://devkitpro.org"
+distfiles="https://github.com/devkitPro/grit/archive/v${version}.tar.gz"
+checksum=e897f80cea71a32513e68b0f8b0a863c4e01bfc925a0f43b47362fb25688b0aa
+
+pre_configure() {
+	./autogen.sh
+}

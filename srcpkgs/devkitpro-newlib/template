@@ -1,0 +1,30 @@
+# Template file for 'devkitpro-newlib'
+pkgname=devkitpro-newlib
+version=3.3.0
+revision=1
+wrksrc="newlib-${version}"
+build_style=gnu-configure
+configure_args="
+ --prefix=/usr/lib/devkitpro
+ --target=arm-none-eabi
+ --host=${XBPS_CROSS_TRIPLET}
+ --with-gnu-as
+ --with-gnu-ld
+ --disable-newlib-supplied-syscalls
+ --disable-newlib-wide-orient
+ --disable-nls
+ --enable-interwork
+ --enable-newlib-mb
+ --enable-newlib-retargetable-locking
+"
+hostmakedepends="cross-arm-none-eabi-binutils cross-arm-none-eabi-gcc"
+short_desc="Newlib patched for NDS"
+maintainer="Ivan Sokolov <ivan-p-sokolov@ya.ru>"
+license="GPL-3.0-or-later"
+homepage="https://devkitpro.org"
+distfiles="ftp://sourceware.org/pub/newlib/newlib-${version}.tar.gz"
+checksum=58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66
+patch_args="-Np1"
+nostrip=yes
+
+CFLAGS_FOR_TARGET="-O2 -ffunction-sections -fdata-sections"
